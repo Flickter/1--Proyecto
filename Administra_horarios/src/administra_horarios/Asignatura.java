@@ -2,12 +2,14 @@ package administra_horarios;
 
 
 
-public class Asignatura {
+public abstract class Asignatura {
 
     private String nombre;
     private int creditos;
 
-    public Asignatura () {
+    public Asignatura (String nom, int cred) {
+        nombre = nom;
+        creditos = cred;
     }
 
     public int getCreditos () {

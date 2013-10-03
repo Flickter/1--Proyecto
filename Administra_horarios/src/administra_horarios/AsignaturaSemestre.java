@@ -5,12 +5,18 @@ public class AsignaturaSemestre {
 
     private Asignatura asignaturaAsig;
     private Aulas AulaAsig;
-    private int ProfesorAsig;
+    private Profesor ProfesorAsig;
     private int hora;
     private int minutos;
     private String dia;
 
-    public AsignaturaSemestre () {
+    public AsignaturaSemestre (Asignatura Asig, Aulas Aul, Profesor Profe, int hor, int min, String day) {
+        asignaturaAsig = Asig ;
+        AulaAsig = Aul;
+        ProfesorAsig = Profe;
+        hora= hor;
+        minutos= min;
+        dia= day;
     }
 
     public Aulas getAulaAsig () {
@@ -21,11 +27,11 @@ public class AsignaturaSemestre {
         this.AulaAsig = val;
     }
     
-    public int getProfesorAsig () {
+    public Profesor getProfesorAsig () {
         return ProfesorAsig;
     }
 
-    public void setProfesorAsig (int val) {
+    public void setProfesorAsig (Profesor val) {
         this.ProfesorAsig = val;
     }
 

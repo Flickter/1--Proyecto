@@ -5,7 +5,9 @@ public class aulaTeoria extends Aulas {
 
     private boolean aireAcond;
 
-    public aulaTeoria () {
+    public aulaTeoria (String nomb, String numAu, String Ubicac, int cap) {
+        super(nomb, numAu, Ubicac, cap);
+        aireAcond = false;
     }
 
     public boolean getAireAcond () {

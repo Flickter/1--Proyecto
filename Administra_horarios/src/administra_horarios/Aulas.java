@@ -1,15 +1,18 @@
 package administra_horarios;
 
 
-public class Aulas {
+public abstract class Aulas {
 
     private String nombre;
     private String numAula;
     private String Ubicacion;
     private int capaciad;
 
-    public Aulas () {
-        
+    public Aulas (String nomb, String numAu, String Ubicac, int cap) {
+        nombre = nomb;
+        numAula = numAu;
+        Ubicacion = Ubicac;
+        capaciad = cap;
     }
     public String getUbicacion () {
         return Ubicacion;

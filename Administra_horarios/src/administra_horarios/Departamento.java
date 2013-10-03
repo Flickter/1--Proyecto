@@ -8,7 +8,9 @@ public class Departamento {
     private List<Asignatura> listaAsig;
 
 
-    public Departamento () {
+    public Departamento (String nom) {
+        nombre = nom;
+        listaAsig = null;
     }
 
     public List<Asignatura> getListaAsig () {

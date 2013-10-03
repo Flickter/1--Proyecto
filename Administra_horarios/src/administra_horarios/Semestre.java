@@ -6,7 +6,9 @@ public class Semestre {
     private int numero;
     private List<AsignaturaSemestre> ListaAsigSem;
 
-    public Semestre () {
+    public Semestre (int nume, List<AsignaturaSemestre> lista) {
+        numero = nume;
+        ListaAsigSem = lista;
     }
 
     public List<AsignaturaSemestre> getListaAsigSem () {

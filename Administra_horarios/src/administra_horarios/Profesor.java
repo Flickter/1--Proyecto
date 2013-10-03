@@ -6,7 +6,10 @@ public class Profesor extends Persona {
     private String horario;
     private Departamento departament;
 
-    public Profesor () {
+    public Profesor (String horari, Departamento depart, String nomb, String ced) {
+        super(nomb, ced);
+        horario = horari;
+        departament =depart;
     }
 
     public Departamento getDepartament () {

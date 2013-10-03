@@ -6,7 +6,9 @@ public class Equipo {
     private int cantidad;
     private String nombre;
 
-    public Equipo () {
+    public Equipo (int cant, String nom) {
+        cantidad = cant;
+        nombre = nom;
     }
 
     public int getCantidad () {
