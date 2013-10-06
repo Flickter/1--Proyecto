@@ -1,4 +1,5 @@
-package administra_horarios;
+package pkPersona;
+import pkAsignatura.Asignatura;
 import java.util.*;
 
 public class Departamento {

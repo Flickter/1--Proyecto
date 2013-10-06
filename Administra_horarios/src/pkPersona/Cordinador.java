@@ -1,4 +1,4 @@
-package administra_horarios;
+package pkPersona;
 
 
 public class Cordinador extends Persona {

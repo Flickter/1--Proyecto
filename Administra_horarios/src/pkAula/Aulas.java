@@ -1,4 +1,4 @@
-package administra_horarios;
+package pkAula;
 
 
 public abstract class Aulas {

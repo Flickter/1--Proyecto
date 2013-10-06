@@ -1,12 +1,12 @@
-package administra_horarios;
+package pkAsignatura;
 
 
 public class Asig_practica extends Asignatura {
 
-    private Object materialApoyo;
+    private String materialApoyo;
     private String sistemaOperativo;
 
-    public Asig_practica (Object ma, String so, String nom, int cred) {
+    public Asig_practica (String ma, String so, String nom, int cred) {
         super(nom, cred);
         materialApoyo = ma;
         sistemaOperativo = so;

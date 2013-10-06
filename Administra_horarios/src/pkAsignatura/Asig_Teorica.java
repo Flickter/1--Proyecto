@@ -1,4 +1,4 @@
-package administra_horarios;
+package pkAsignatura;
 
 
 public class Asig_Teorica extends Asignatura {
