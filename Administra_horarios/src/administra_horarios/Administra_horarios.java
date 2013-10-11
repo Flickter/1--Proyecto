@@ -17,17 +17,25 @@ import java.util.List;
  */
 public class Administra_horarios {
 
+    //Se crea la lista de semetres 
+        public static List<Semestre> ListaSemestres = new ArrayList<>();
+        public static Semestre SemestreActual;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
         
-        //Se crea la lista de semetres 
-        List<Semestre> ListaSemestres = new ArrayList<>();
+        Administra_horarios nose = new Administra_horarios();
+        nose.cargarDatos();
+       
         
-      
-        //Materias del primer semestre
+    }
+    
+    public void cargarDatos(){
+        
+         //Materias del primer semestre
         Asig_Teorica Asig11 = new Asig_Teorica("Tec-digital.ac.cr", "Ingles 1", 3);
         Asig_Teorica Asig12 = new Asig_Teorica("Tec-digital.ac.cr", "Comunicacion Tecnica", 2);
         Asig_Teorica Asig13 = new Asig_Teorica("Tec-digital.ac.cr", "Matematica Discreta", 4);
@@ -137,6 +145,6 @@ public class Administra_horarios {
         //Se agrega semestre 4
         Semestre Semestre4 = new Semestre(4, ListaSemestre2);
         ListaSemestres.add(Semestre4);
-        
     }
+    
 }

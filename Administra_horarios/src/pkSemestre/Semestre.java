@@ -19,7 +19,7 @@ public class Semestre {
         numero = nume;
         ListaAsigSem = lista;
     }
-
+    
     /**
      * Devuelve la lista de materias
      * @return Una lista de objetos AsignaturaSemestre
