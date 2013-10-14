@@ -35,6 +35,7 @@ public class Administra_horarios {
         public static List<HorarioAsig> horarioAatual;
         public static Aulas AulaActual;
         public static List<Equipo> ListEquipoActual;
+        public static List<Semestre> ListaCalendarioSemestre= new ArrayList<>();
        
         
     

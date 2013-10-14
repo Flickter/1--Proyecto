@@ -132,7 +132,13 @@ public class viewCordMaterias extends javax.swing.JFrame {
             }
         });
 
+        jBGenerar.setFont(new java.awt.Font("Nyala", 0, 15)); // NOI18N
         jBGenerar.setText("Generar Horario Semestral");
+        jBGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGenerarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,7 +153,7 @@ public class viewCordMaterias extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(83, 83, 83)
                                 .addComponent(jBGenerar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                                 .addComponent(jBCerrar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,6 +356,36 @@ public class viewCordMaterias extends javax.swing.JFrame {
         new viewCordAulas().setVisible(true);
         mtds.generarListaAulas(Administra_horarios.ListaAulas);
     }//GEN-LAST:event_jBVerAulasActionPerformed
+
+    private void jBGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGenerarActionPerformed
+        // TODO add your handling code here:
+        Semestre sem;
+        Semestre tempSem = null;
+        int num = Administra_horarios.SemestreActual.getNumero();
+        sem = mtds.ObtenerSemestre(num, administra_horarios.Administra_horarios.ListaCalendarioSemestre);
+            
+            if(sem == null){
+                sem = mtds.ObtenerSemestre(num, Administra_horarios.ListaSemestres);
+                tempSem = mtds.GenerarSemestre(sem);
+                
+                if(tempSem != null){
+                    Administra_horarios.ListaCalendarioSemestre.add(tempSem);
+                    Administra_horarios.SemestreActual = tempSem;
+                
+                    new viewCalendario().setVisible(true);
+                    mtds.GenerarHorario();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "No se genero el semestre ya que hay choques");
+                }
+            }
+            else{
+                    Administra_horarios.SemestreActual = sem;
+                
+                    new viewCalendario().setVisible(true);
+                    mtds.GenerarHorario();
+            }
+    }//GEN-LAST:event_jBGenerarActionPerformed
 
     /**
      * @param args the command line arguments

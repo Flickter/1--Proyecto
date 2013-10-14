@@ -24,7 +24,7 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumnModel;
-import pkSemestre.AsignaturaSemestre;
+import pkSemestre.*;
 
 /**
  *
@@ -155,6 +155,61 @@ public class metodos {
             if(temp.equals(cod)){
              return Lista.get(i);
             }
+        }
+        return null;
+    }
+    
+    public Semestre GenerarSemestre(Semestre semestre){
+        
+        boolean Generar = true;
+        for(int i=0; i< semestre.getListaAsigSem().size(); i++){
+            AsignaturaSemestre tempAsig = semestre.getListaAsigSem().get(i);
+            String nomProfe = tempAsig.getProfesorAsig().getCedula();
+            for(int k=0; k< tempAsig.getHorario().size(); k++){
+                int hInicial = tempAsig.getHorario().get(k).getHoraInicial();
+                int hFinal = tempAsig.getHorario().get(k).getHoraFinal();
+                int mInicial = tempAsig.getHorario().get(k).getMinutosInicial();
+                int mFinal = tempAsig.getHorario().get(k).getMinutosFinal();
+                String nomAula = tempAsig.getHorario().get(k).getAulas().getNumAula();
+                String nomDia = tempAsig.getHorario().get(k).getDia();
+                
+                
+                for(int h=0; h<semestre.getListaAsigSem().size(); h++){
+                    AsignaturaSemestre tempAsigCompro = semestre.getListaAsigSem().get(i);
+                    for(int m=0; m< tempAsigCompro.getHorario().size(); m++){
+                        int hInicialCompro = tempAsigCompro.getHorario().get(m).getHoraInicial();
+                        int hFinalCompro = tempAsigCompro.getHorario().get(m).getHoraFinal();
+                        int mInicialCompro = tempAsigCompro.getHorario().get(m).getMinutosInicial();
+                        int mFinalCompro = tempAsigCompro.getHorario().get(m).getMinutosFinal();
+                        String nomAulaCompro = tempAsigCompro.getHorario().get(m).getAulas().getNumAula();
+                        String nomDiaCompro = tempAsigCompro.getHorario().get(m).getDia();
+                        
+                        if(tempAsig != tempAsigCompro){
+                            boolean aulas = nomAula.equals(nomAulaCompro);
+                            boolean dias = nomDia.equals(nomDiaCompro);
+                            boolean hora = true;
+                            int Inicio =0;
+                            int fin = 0;
+                            if(hInicial>hInicialCompro){
+                                Inicio = hInicial;
+                                fin = hFinal;
+                                if(hInicialCompro<Inicio &&hFinalCompro>fin)
+                                    hora = false;
+                            }else{
+                                Inicio = hInicialCompro;
+                                fin = hFinalCompro;
+                                if(hInicial<Inicio &&hFinal>fin)
+                                    hora = false;
+                            }
+                            if(hora = false)
+                                Generar = false;
+                        } 
+                    }
+                }
+            } 
+        }
+        if (Generar == true){
+            return semestre;
         }
         return null;
     }

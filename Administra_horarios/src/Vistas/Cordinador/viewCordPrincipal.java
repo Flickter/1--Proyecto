@@ -4,9 +4,10 @@
  */
 package Vistas.Cordinador;
 
-import administra_horarios.metodos;
+import administra_horarios.*;
 import java.awt.Label;
 import static java.awt.image.ImageObserver.WIDTH;
+import javax.swing.JOptionPane;
 import pkSemestre.Semestre;
 
 /**
@@ -111,7 +112,7 @@ public class viewCordPrincipal extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jBVerCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBVerCalendario)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -136,10 +137,18 @@ public class viewCordPrincipal extends javax.swing.JFrame {
         metodos mtdo = new metodos();
         Semestre sem;
         int num = jComboBox1.getSelectedIndex();
-        num = num+1;
-        sem = mtdo.ObtenerSemestre(num, administra_horarios.Administra_horarios.ListaSemestres);
-        administra_horarios.Administra_horarios.SemestreActual = sem;
+        num = num + 1;
         
+        if (Administra_horarios.ListaCalendarioSemestre.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No hay ningun Semestre Generado");
+            return;
+        }
+        if(Administra_horarios.ListaCalendarioSemestre.get(num - 1) == null){
+            JOptionPane.showMessageDialog(null, "El semestre no ha sido generar");
+            return;
+        }
+        sem = mtdo.ObtenerSemestre(num, Administra_horarios.ListaCalendarioSemestre);
+        Administra_horarios.SemestreActual = sem;
         new viewCalendario().setVisible(true);
         mtdo.GenerarHorario();
     }//GEN-LAST:event_jBVerCalendarioActionPerformed

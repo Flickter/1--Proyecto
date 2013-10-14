@@ -242,6 +242,7 @@ public class viewCordAulas extends javax.swing.JFrame {
             Administra_horarios.ListEquipoActual = AulaPra.getListaEquipo();
             viewCordEquipo.jLNomMod.setText( Administra_horarios.ListEquipoActual.get(0).getNombre());
             viewCordEquipo.jLCantidadMod.setText( String.valueOf(Administra_horarios.ListEquipoActual.get(0).getCantidad()));
+            viewCordEquipo.jLTituloMat.setText(AulaPra.getNumAula());
         }
         
         

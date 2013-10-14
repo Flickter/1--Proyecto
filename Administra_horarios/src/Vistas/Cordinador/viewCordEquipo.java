@@ -31,7 +31,7 @@ public class viewCordEquipo extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLTituloMat = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jBAtras = new javax.swing.JButton();
@@ -45,8 +45,8 @@ public class viewCordEquipo extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe Print", 0, 18)); // NOI18N
         jLabel1.setText("Equipo del Aula");
 
-        jLabel2.setFont(new java.awt.Font("Segoe Print", 0, 18)); // NOI18N
-        jLabel2.setText("Tacata");
+        jLTituloMat.setFont(new java.awt.Font("Segoe Print", 0, 18)); // NOI18N
+        jLTituloMat.setText("Tacata");
 
         jLabel3.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
         jLabel3.setText("Nombre:");
@@ -71,10 +71,10 @@ public class viewCordEquipo extends javax.swing.JFrame {
         });
 
         jLNomMod.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jLNomMod.setText("Cambiar");
+        jLNomMod.setText("|");
 
         jLCantidadMod.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jLCantidadMod.setText("Cambiar2");
+        jLCantidadMod.setText("|");
 
         jButton3.setFont(new java.awt.Font("Papyrus", 0, 13)); // NOI18N
         jButton3.setText("Cerrar");
@@ -96,7 +96,7 @@ public class viewCordEquipo extends javax.swing.JFrame {
                                 .addGap(91, 91, 91)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2))
+                                .addComponent(jLTituloMat))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(133, 133, 133)
                                 .addComponent(jBAtras)
@@ -125,7 +125,7 @@ public class viewCordEquipo extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLTituloMat))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -219,8 +219,8 @@ public class viewCordEquipo extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     public static javax.swing.JLabel jLCantidadMod;
     public static javax.swing.JLabel jLNomMod;
+    public static javax.swing.JLabel jLTituloMat;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
