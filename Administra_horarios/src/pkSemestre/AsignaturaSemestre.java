@@ -59,5 +59,21 @@ public class AsignaturaSemestre {
         this.asignaturaAsig = val;
     }
 
+    /**
+     * Devuelve la Lista de horarios
+     * @return Un objeto tipo List<HorarioAsig> con la lista de horarios
+     */
+    public List<HorarioAsig> getHorario() {
+        return Horario;
+    }
+    
+    /**
+     * Setea la lista de horario
+     * @param val Un objeto con la lista de horario
+     */
+    public void setHorario (List<HorarioAsig> val) {
+        this.Horario = val;
+    }
+    
 }
 

@@ -3,6 +3,10 @@
  * and open the template in the editor.
  */
 package Vistas.Cordinador;
+import administra_horarios.*;
+import javax.swing.JOptionPane;
+import pkSemestre.*;
+        
 
 /**
  *
@@ -10,6 +14,7 @@ package Vistas.Cordinador;
  */
 public class viewCordHorarioMat extends javax.swing.JFrame {
 
+    public static int indice;
     /**
      * Creates new form viewCordHorarioMat
      */
@@ -26,9 +31,9 @@ public class viewCordHorarioMat extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLTitulo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jCBAulas = new javax.swing.JComboBox();
         cpHoraIni = new javax.swing.JLabel();
         cpHoraFin = new javax.swing.JLabel();
         spHoraIni = new javax.swing.JSpinner();
@@ -38,15 +43,17 @@ public class viewCordHorarioMat extends javax.swing.JFrame {
         spMinFin = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jCBDia = new javax.swing.JComboBox();
+        jBAtras = new javax.swing.JButton();
+        jBAdelante = new javax.swing.JButton();
+        jBListo = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLNombreMod = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe Print", 0, 18)); // NOI18N
-        jLabel1.setText("Titulo Materia");
+        jLTitulo.setFont(new java.awt.Font("Segoe Print", 0, 18)); // NOI18N
+        jLTitulo.setText("Titulo Materia");
 
         jLabel2.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
         jLabel2.setText("Aula:");
@@ -64,7 +71,7 @@ public class viewCordHorarioMat extends javax.swing.JFrame {
 
         spMinIni.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
 
-        spHoraFin.setModel(new javax.swing.SpinnerNumberModel(7, 7, 16, 1));
+        spHoraFin.setModel(new javax.swing.SpinnerNumberModel(16, 7, 16, 1));
         spHoraFin.setName(""); // NOI18N
 
         spMinFin.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
@@ -74,41 +81,55 @@ public class viewCordHorarioMat extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
         jLabel3.setText("Dia:");
 
-        jComboBox2.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes" }));
+        jCBDia.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jCBDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes" }));
 
-        jButton1.setText("<");
+        jBAtras.setText("<");
+        jBAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAtrasActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText(">");
+        jBAdelante.setText(">");
+        jBAdelante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAdelanteActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Papyrus", 0, 13)); // NOI18N
-        jButton3.setText("Listo");
+        jBListo.setFont(new java.awt.Font("Papyrus", 0, 13)); // NOI18N
+        jBListo.setText("Listo");
+        jBListo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBListoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("High Tower Text", 0, 14)); // NOI18N
+        jLabel4.setText("Nombre:");
+
+        jLNombreMod.setFont(new java.awt.Font("High Tower Text", 0, 14)); // NOI18N
+        jLNombreMod.setText("materia");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
+                .addContainerGap(108, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCBAulas, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(153, 153, 153))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(22, 22, 22)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cpHoraIni)
-                                .addGap(5, 5, 5)
-                                .addComponent(spHoraIni, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spMinIni, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jCBDia, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cpHoraFin)
                                 .addGap(10, 10, 10)
@@ -118,55 +139,282 @@ public class viewCordHorarioMat extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(spMinFin, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(cpHoraIni)
+                                .addGap(5, 5, 5)
+                                .addComponent(spHoraIni, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(100, 100, 100))
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spMinIni, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLNombreMod)))
+                        .addGap(24, 24, 24))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jBAtras)
                         .addGap(73, 73, 73)
-                        .addComponent(jButton2)
-                        .addGap(123, 123, 123))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addContainerGap())))
+                        .addComponent(jBAdelante)
+                        .addGap(40, 40, 40)
+                        .addComponent(jBListo)
+                        .addGap(20, 20, 20))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(jLTitulo)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLTitulo)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cpHoraIni)
-                    .addComponent(spHoraIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(spMinIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cpHoraFin)
-                    .addComponent(spHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(spMinFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                    .addComponent(jCBAulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(jBListo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLNombreMod))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cpHoraIni)
+                            .addComponent(spHoraIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(spMinIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cpHoraFin)
+                            .addComponent(spHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(spMinFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jCBDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBAtras)
+                            .addComponent(jBAdelante))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBListoActionPerformed
+        // TODO add your handling code here:
+        String nomAula = (String)jCBAulas.getSelectedItem();
+        int indiceAula = 0;
+        
+        for(int i=0; i< Administra_horarios.ListaAulas.size(); i++){
+                if(nomAula.equals(Administra_horarios.ListaAulas.get(i).getNumAula())){
+                    indiceAula = i;                    
+                }
+            }
+            int horaIni = (int)spHoraIni.getValue();
+            int horafin = (int)spHoraFin.getValue();
+            int minIni = (int)spMinIni.getValue();
+            int Minfin = (int)spMinFin.getValue();
+            String dia = (String)jCBDia.getSelectedItem();
+            if(horaIni> horafin){
+                JOptionPane.showMessageDialog(null, "Verifique las horas, no se la inicial mayor a la final");
+                return;
+            }
+            if(horaIni == horafin){
+                if(minIni> Minfin){
+                    JOptionPane.showMessageDialog(null, "Verifique los minutos, no se los inicial mayor a los final");
+                return;
+                }
+            }
+            if(horaIni == 7 && horafin == 16 && minIni == 0 && Minfin == 0 && dia.equals("Lunes") && nomAula.equals("A-01")){
+                JOptionPane.showMessageDialog(null, "Ingrese datos");
+                return;
+            }
+            HorarioAsig horarioNuevo = new HorarioAsig(Administra_horarios.ListaAulas.get(indiceAula), horaIni, minIni, horafin, Minfin, dia);
+        
+        
+        if(indice == Administra_horarios.horarioAatual.size()){
+            //crea nuevo horario
+            Administra_horarios.horarioAatual.add(horarioNuevo);
+        }
+        else{
+            //setea un nuevo horario
+            Administra_horarios.horarioAatual.set(indice, horarioNuevo);
+        }
+        
+        this.hide();
+    }//GEN-LAST:event_jBListoActionPerformed
+
+    private void jBAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtrasActionPerformed
+        // TODO add your handling code here:
+        
+        //Guardar informacion
+        
+        String nomAula = (String)jCBAulas.getSelectedItem();
+        int indiceAula = 0;
+        
+        for(int i=0; i< Administra_horarios.ListaAulas.size(); i++){
+                if(nomAula.equals(Administra_horarios.ListaAulas.get(i).getNumAula())){
+                    indiceAula = i;                    
+                }
+            }
+            int horaIni = (int)spHoraIni.getValue();
+            int horafin = (int)spHoraFin.getValue();
+            int minIni = (int)spMinIni.getValue();
+            int Minfin = (int)spMinFin.getValue();
+            String dia = (String)jCBDia.getSelectedItem();
+            if(horaIni> horafin){
+                JOptionPane.showMessageDialog(null, "Verifique las horas, no se la inicial mayor a la final");
+                return;
+            }
+            if(horaIni == horafin){
+                if(minIni> Minfin){
+                    JOptionPane.showMessageDialog(null, "Verifique los minutos, no se los inicial mayor a los final");
+                return;
+                }
+            }
+            if(horaIni == 7 && horafin == 16 && minIni == 0 && Minfin == 0 && dia.equals("Lunes") && nomAula.equals("A-01")){
+               JOptionPane.showMessageDialog(null, "No se guardo el horario anterior");
+            }
+            else{
+                HorarioAsig horarioNuevo = new HorarioAsig(Administra_horarios.ListaAulas.get(indiceAula), horaIni, minIni, horafin, Minfin, dia);
+        
+        
+                if(indice == Administra_horarios.horarioAatual.size()){
+                    //crea nuevo horario
+                    Administra_horarios.horarioAatual.add(horarioNuevo);
+                }
+                else{
+                    //setea un nuevo horario
+                    Administra_horarios.horarioAatual.set(indice, horarioNuevo);
+                }
+            }
+        //Muetra de elementos
+        int indAula = 0;
+        if(indice-1 == -1){
+            JOptionPane.showMessageDialog(null, "No hay horarios anteriores");
+        }
+        else{
+            indice = indice -1;
+            
+            for(int i=0; i< Administra_horarios.ListaAulas.size(); i++){
+                if (Administra_horarios.ListaAulas.get(i).getNumAula().equals(Administra_horarios.horarioAatual.get(indice).getAulas().getNumAula())){
+                    indAula = i;
+                    break;
+                }
+            }
+            
+            for(int i=0; i<5; i++){
+            String item = (String)viewCordHorarioMat.jCBDia.getItemAt(i);
+                if (item.equals(Administra_horarios.AsignaturaSemetreActual.getHorario().get(indice).getDia())){
+                viewCordHorarioMat.jCBDia.setSelectedIndex(i);
+                break;
+                }
+            }
+            
+            jCBAulas.setSelectedIndex(indAula);
+            Administra_horarios.horarioAatual.get(indice).getAulas().getNumAula();
+            spHoraIni.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(indice).getHoraInicial());
+            spMinIni.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(indice).getMinutosInicial());
+            spHoraFin.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(indice).getHoraFinal());
+            spMinFin.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(indice).getMinutosFinal());
+        }
+        
+    }//GEN-LAST:event_jBAtrasActionPerformed
+
+    private void jBAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdelanteActionPerformed
+        // TODO add your handling code here:
+        
+        //Guardar informacion
+        String nomAula = (String)jCBAulas.getSelectedItem();
+        int indiceAula = 0;
+        
+        for(int i=0; i< Administra_horarios.ListaAulas.size(); i++){
+                if(nomAula.equals(Administra_horarios.ListaAulas.get(i).getNumAula())){
+                    indiceAula = i;                    
+                }
+            }
+            int horaIni = (int)spHoraIni.getValue();
+            int horafin = (int)spHoraFin.getValue();
+            int minIni = (int)spMinIni.getValue();
+            int Minfin = (int)spMinFin.getValue();
+            String dia = (String)jCBDia.getSelectedItem();
+            if(horaIni> horafin){
+                JOptionPane.showMessageDialog(null, "Verifique las horas, no se la inicial mayor a la final");
+                return;
+            }
+            if(horaIni == horafin){
+                if(minIni> Minfin){
+                    JOptionPane.showMessageDialog(null, "Verifique los minutos, no se los inicial mayor a los final");
+                return;
+                }
+            }
+            if(horaIni == 7 && horafin == 16 && minIni == 0 && Minfin == 0 && dia.equals("Lunes") && nomAula.equals("A-01")){
+               JOptionPane.showMessageDialog(null, "No se guardo el horario anterior");
+            }
+            else{
+                HorarioAsig horarioNuevo = new HorarioAsig(Administra_horarios.ListaAulas.get(indiceAula), horaIni, minIni, horafin, Minfin, dia);
+        
+        
+                if(indice == Administra_horarios.horarioAatual.size()){
+                    //crea nuevo horario
+                    Administra_horarios.horarioAatual.add(horarioNuevo);
+                }
+                else{
+                    //setea un nuevo horario
+                    Administra_horarios.horarioAatual.set(indice, horarioNuevo);
+                }
+            }
+        
+            if(indice+1 > Administra_horarios.horarioAatual.size()){
+                return;
+            }
+            
+        //Muetra de elementos
+        int indAula = 0;
+        if(indice+1 == Administra_horarios.horarioAatual.size()){
+            JOptionPane.showMessageDialog(null, "El siguiente horario es para crear uno nuevo, ingrese los datos");
+            indice = indice +1;
+            jCBAulas.setSelectedIndex(0);
+            jCBDia.setSelectedIndex(0);
+            Administra_horarios.horarioAatual.get(0).getAulas().getNumAula();
+            spHoraIni.setValue(7);
+            spMinIni.setValue(0);
+            spHoraFin.setValue(16);
+            spMinFin.setValue(0);
+        }
+        else{
+            indice = indice +1;
+            
+            for(int i=0; i< Administra_horarios.ListaAulas.size(); i++){
+                if (Administra_horarios.ListaAulas.get(i).getNumAula().equals(Administra_horarios.horarioAatual.get(indice).getAulas().getNumAula())){
+                    indAula = i;
+                    break;
+                }
+            }
+            
+            for(int i=0; i<5; i++){
+            String item = (String)viewCordHorarioMat.jCBDia.getItemAt(i);
+                if (item.equals(Administra_horarios.AsignaturaSemetreActual.getHorario().get(indice).getDia())){
+                viewCordHorarioMat.jCBDia.setSelectedIndex(i);
+                break;
+                }
+            }
+            
+            jCBAulas.setSelectedIndex(indAula);
+            Administra_horarios.horarioAatual.get(indice).getAulas().getNumAula();
+            spHoraIni.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(indice).getHoraInicial());
+            spMinIni.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(indice).getMinutosInicial());
+            spHoraFin.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(indice).getHoraFinal());
+            spMinFin.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(indice).getMinutosFinal());
+        }
+    }//GEN-LAST:event_jBAdelanteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,19 +453,21 @@ public class viewCordHorarioMat extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cpHoraFin;
     private javax.swing.JLabel cpHoraIni;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jBAdelante;
+    private javax.swing.JButton jBAtras;
+    private javax.swing.JButton jBListo;
+    public static javax.swing.JComboBox jCBAulas;
+    public static javax.swing.JComboBox jCBDia;
+    public static javax.swing.JLabel jLNombreMod;
+    public static javax.swing.JLabel jLTitulo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JSpinner spHoraFin;
-    private javax.swing.JSpinner spHoraIni;
-    private javax.swing.JSpinner spMinFin;
-    private javax.swing.JSpinner spMinIni;
+    public static javax.swing.JSpinner spHoraFin;
+    public static javax.swing.JSpinner spHoraIni;
+    public static javax.swing.JSpinner spMinFin;
+    public static javax.swing.JSpinner spMinIni;
     // End of variables declaration//GEN-END:variables
 }

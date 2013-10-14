@@ -15,9 +15,10 @@ public class Asig_practica extends Asignatura {
      * @param so String para definir el Sistema Operativo que se va a usar
      * @param nom String para definir el nombre de la asignatura
      * @param cred Integer para definir la cantidad de creditos
+     * @param cod Un String con el codigo de la materia
      */
-    public Asig_practica (String ma, String so, String nom, int cred) {
-        super(nom, cred);
+    public Asig_practica (String ma, String so, String nom, int cred, String cod) {
+        super(nom, cred, cod);
         materialApoyo = ma;
         sistemaOperativo = so;
     }

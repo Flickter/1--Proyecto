@@ -34,8 +34,9 @@ public class viewCordPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        jBIngresar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jBVerCalendario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,16 +49,29 @@ public class viewCordPrincipal extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("High Tower Text", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semestre 1", "Semestre 2", "Semestre 3", "Semestre 4", "Semestre 5", "Semestre 6", "Semestre 7", "Semestre 8" }));
 
-        jButton1.setFont(new java.awt.Font("High Tower Text", 0, 18)); // NOI18N
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBIngresar.setFont(new java.awt.Font("High Tower Text", 0, 18)); // NOI18N
+        jBIngresar.setText("Ingresar");
+        jBIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBIngresarActionPerformed(evt);
             }
         });
 
         jButton2.setFont(new java.awt.Font("Papyrus", 0, 13)); // NOI18N
         jButton2.setText("Cerrar Sesion");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jBVerCalendario.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        jBVerCalendario.setText("Ver Calendario");
+        jBVerCalendario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVerCalendarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,7 +85,8 @@ public class viewCordPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jBIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBVerCalendario))
                         .addGap(0, 85, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -88,16 +103,22 @@ public class viewCordPrincipal extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
+                .addComponent(jBIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jBVerCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBIngresarActionPerformed
         metodos mtdo = new metodos();
         Semestre sem;
         int num = jComboBox1.getSelectedIndex();
@@ -106,7 +127,27 @@ public class viewCordPrincipal extends javax.swing.JFrame {
         administra_horarios.Administra_horarios.SemestreActual = sem;
         
         new viewCordMaterias().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        mtdo.generarListaMaterias(sem.getListaAsigSem());
+        this.hide();
+    }//GEN-LAST:event_jBIngresarActionPerformed
+
+    private void jBVerCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerCalendarioActionPerformed
+        // TODO add your handling code here:
+        metodos mtdo = new metodos();
+        Semestre sem;
+        int num = jComboBox1.getSelectedIndex();
+        num = num+1;
+        sem = mtdo.ObtenerSemestre(num, administra_horarios.Administra_horarios.ListaSemestres);
+        administra_horarios.Administra_horarios.SemestreActual = sem;
+        
+        new viewCalendario().setVisible(true);
+        mtdo.GenerarHorario();
+    }//GEN-LAST:event_jBVerCalendarioActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,7 +184,8 @@ public class viewCordPrincipal extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBIngresar;
+    private javax.swing.JButton jBVerCalendario;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;

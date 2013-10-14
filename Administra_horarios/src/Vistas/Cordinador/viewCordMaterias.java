@@ -4,12 +4,25 @@
  */
 package Vistas.Cordinador;
 
+import administra_horarios.metodos;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import pkSemestre.*;
+import pkAsignatura.*;
+import sun.security.krb5.internal.ccache.CCacheInputStream;
+import administra_horarios.*;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alonso
  */
 public class viewCordMaterias extends javax.swing.JFrame {
-
+    
+       metodos mtds = new metodos();
+    
     /**
      * Creates new form viewCordMaterias
      */
@@ -27,7 +40,7 @@ public class viewCordMaterias extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jListMaterias = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
         cpNombre = new javax.swing.JLabel();
         cpModNombre = new javax.swing.JLabel();
@@ -37,16 +50,22 @@ public class viewCordMaterias extends javax.swing.JFrame {
         cpMatApo = new javax.swing.JLabel();
         cpModSOPgW = new javax.swing.JLabel();
         cpModMatApo = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBModificar = new javax.swing.JButton();
+        jBVerAulas = new javax.swing.JButton();
+        jBHorario = new javax.swing.JButton();
         cpProfesor = new javax.swing.JLabel();
         cpModProfesor = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        jBCerrar = new javax.swing.JButton();
+        jBGenerar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setViewportView(jList1);
+        jListMaterias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListMateriasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jListMaterias);
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
         jLabel1.setText("Materias Semestre");
@@ -55,13 +74,13 @@ public class viewCordMaterias extends javax.swing.JFrame {
         cpNombre.setText("Nombre:");
 
         cpModNombre.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        cpModNombre.setText("modifica");
+        cpModNombre.setText("|");
 
         cpCreditos.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
         cpCreditos.setText("Creditos:");
 
         cpModCreditos.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        cpModCreditos.setText("modifica2");
+        cpModCreditos.setText("|");
 
         cpSOPgW.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
         cpSOPgW.setText("SO o PagWeb: ");
@@ -70,28 +89,50 @@ public class viewCordMaterias extends javax.swing.JFrame {
         cpMatApo.setText("Material de Apoyo:");
 
         cpModSOPgW.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        cpModSOPgW.setText("modiica3");
+        cpModSOPgW.setText("|");
 
         cpModMatApo.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        cpModMatApo.setText("modifica4");
+        cpModMatApo.setText("|");
 
-        jButton1.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jButton1.setText("Modificar");
+        jBModificar.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jBModificar.setText("Modificar");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jButton2.setText("Ver Aulas");
+        jBVerAulas.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jBVerAulas.setText("Ver Aulas");
+        jBVerAulas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVerAulasActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jButton3.setText("Horario");
+        jBHorario.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jBHorario.setText("Horario");
+        jBHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBHorarioActionPerformed(evt);
+            }
+        });
 
         cpProfesor.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
         cpProfesor.setText("Profesor:");
 
         cpModProfesor.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        cpModProfesor.setText("modifica5");
+        cpModProfesor.setText("|");
 
-        jButton4.setFont(new java.awt.Font("Papyrus", 0, 13)); // NOI18N
-        jButton4.setText("Cerrar");
+        jBCerrar.setFont(new java.awt.Font("Papyrus", 0, 13)); // NOI18N
+        jBCerrar.setText("Cerrar");
+        jBCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCerrarActionPerformed(evt);
+            }
+        });
+
+        jBGenerar.setText("Generar Horario Semestral");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,42 +143,46 @@ public class viewCordMaterias extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(jBGenerar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                                .addComponent(jBCerrar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cpNombre)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cpModNombre))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jBModificar)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jBVerAulas)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jBHorario))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cpSOPgW)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cpModSOPgW))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cpCreditos)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cpModCreditos))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cpMatApo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cpModMatApo))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cpProfesor)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cpModProfesor)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3)
-                                .addGap(0, 42, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGap(38, 38, 38)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cpNombre)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cpModNombre))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cpSOPgW)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cpModSOPgW))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cpCreditos)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cpModCreditos))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cpMatApo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cpModMatApo))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cpProfesor)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cpModProfesor)))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jLabel1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -148,38 +193,163 @@ public class viewCordMaterias extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cpNombre)
-                            .addComponent(cpModNombre))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cpCreditos)
-                            .addComponent(cpModCreditos))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cpSOPgW)
-                            .addComponent(cpModSOPgW))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cpMatApo)
-                            .addComponent(cpModMatApo))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cpProfesor)
-                            .addComponent(cpModProfesor))
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton4)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBCerrar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cpNombre)
+                                    .addComponent(cpModNombre))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cpCreditos)
+                                    .addComponent(cpModCreditos))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cpSOPgW)
+                                    .addComponent(cpModSOPgW))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cpMatApo)
+                                    .addComponent(cpModMatApo))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cpProfesor)
+                                    .addComponent(cpModProfesor))
+                                .addGap(65, 65, 65)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jBModificar)
+                                    .addComponent(jBVerAulas)
+                                    .addComponent(jBHorario))
+                                .addGap(18, 18, 18)
+                                .addComponent(jBGenerar))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+        // TODO add your handling code here:
+        if(Administra_horarios.AsignaturaSemetreActual == null){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una materia");
+        }
+        else{
+            new viewCordModificarMat().setVisible(true);
+            viewCordModificarMat.cpModNombre.setText(Administra_horarios.AsignaturaSemetreActual.getAsignaturaAsig().getNombre());
+            viewCordModificarMat.cpModCreditos.setText(String.valueOf(Administra_horarios.AsignaturaSemetreActual.getAsignaturaAsig().getCreditos()));
+            
+            String tipoClase = Administra_horarios.AsignaturaSemetreActual.getAsignaturaAsig().getClass().getCanonicalName();
+            if (tipoClase.equals("pkAsignatura.Asig_Teorica")){
+                Asig_Teorica asigTeo = (Asig_Teorica)Administra_horarios.AsignaturaSemetreActual.getAsignaturaAsig();
+                viewCordModificarMat.cpSOPgW.setText("Pagina Web:");
+                viewCordModificarMat.jTFSOPagWeb.setText(asigTeo.getPaginaWeb());
+                viewCordModificarMat.cpMatApo.setText("");
+                viewCordModificarMat.jTFMatApoy.show(false);
+            
+            }
+            if (tipoClase.equals("pkAsignatura.Asig_practica")){
+                Asig_practica asigPrac = (Asig_practica)Administra_horarios.AsignaturaSemetreActual.getAsignaturaAsig();
+                viewCordModificarMat.cpSOPgW.setText("Sistema Operativo:");
+                viewCordModificarMat.jTFSOPagWeb.setText(asigPrac.getSistemaOperativo());
+                viewCordModificarMat.cpMatApo.setText("Material de Apoyo:");
+                viewCordModificarMat.jTFMatApoy.show(true);
+                viewCordModificarMat.jTFMatApoy.setText(asigPrac.getMaterial());
+            }
+            int indice = 0;
+            for(int i=0; i<Administra_horarios.ListaProfesores.size(); i++){
+                viewCordModificarMat.jComboBox1.addItem(Administra_horarios.ListaProfesores.get(i).getNombre());
+                if(Administra_horarios.ListaProfesores.get(i).getNombre().equals(Administra_horarios.AsignaturaSemetreActual.getProfesorAsig().getNombre())){
+                    indice = i;
+                }
+            }
+            viewCordModificarMat.jComboBox1.setSelectedIndex(indice);
+            viewCordModificarMat.indiceProfe = indice;
+        
+        }
+    }//GEN-LAST:event_jBModificarActionPerformed
+
+    private void jListMateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListMateriasMouseClicked
+        // TODO add your handling code here:
+        String codigo;
+        codigo = (String)jListMaterias.getSelectedValue();
+        AsignaturaSemestre sem = mtds.obtenerMateria(codigo);
+        cpModNombre.setText(sem.getAsignaturaAsig().getNombre());
+        cpModCreditos.setText(Integer.toString(sem.getAsignaturaAsig().getCreditos()));
+        cpModProfesor.setText(sem.getProfesorAsig().getNombre());
+        
+        
+        String tipoClase = sem.getAsignaturaAsig().getClass().getCanonicalName();
+        if (tipoClase.equals("pkAsignatura.Asig_Teorica")){
+            Asig_Teorica asigTeo = (Asig_Teorica)sem.getAsignaturaAsig();
+            cpSOPgW.setText("Pagina Web:");
+            cpModSOPgW.setText(asigTeo.getPaginaWeb());
+            cpMatApo.setText("");
+            cpModMatApo.setText("");
+        }
+        if (tipoClase.equals("pkAsignatura.Asig_practica")){
+            Asig_practica asigPrac = (Asig_practica)sem.getAsignaturaAsig();
+            cpSOPgW.setText("Sistema Operativo:");
+            cpModSOPgW.setText(asigPrac.getSistemaOperativo());
+            cpMatApo.setText("Material de Apoyo:");
+            cpModMatApo.setText(asigPrac.getMaterial());
+        }
+        Administra_horarios.AsignaturaSemetreActual = sem;
+        
+    }//GEN-LAST:event_jListMateriasMouseClicked
+
+    private void jBCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCerrarActionPerformed
+        // TODO add your handling code here:
+        new viewCordPrincipal().setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_jBCerrarActionPerformed
+
+    private void jBHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBHorarioActionPerformed
+        // TODO add your handling code here:
+        if(Administra_horarios.AsignaturaSemetreActual == null){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una materia");
+        }
+        else{
+        new viewCordHorarioMat().setVisible(true);
+        String codigo = Administra_horarios.AsignaturaSemetreActual.getHorario().get(0).getAulas().getNumAula();
+        int indice = 0;
+        
+        for(int i=0; i< Administra_horarios.ListaAulas.size(); i++){            
+            viewCordHorarioMat.jCBAulas.addItem(Administra_horarios.ListaAulas.get(i).getNumAula());
+            if (Administra_horarios.ListaAulas.get(i).getNumAula().equals(codigo)){
+                indice = i;
+            }
+        }
+        
+        viewCordHorarioMat.jCBAulas.setSelectedIndex(indice);
+        viewCordHorarioMat.jLNombreMod.setText(Administra_horarios.AsignaturaSemetreActual.getAsignaturaAsig().getNombre());
+        for(int i=0; i<5; i++){
+            String item = (String)viewCordHorarioMat.jCBDia.getItemAt(i);
+            if (item.equals(Administra_horarios.AsignaturaSemetreActual.getHorario().get(0).getDia())){
+                viewCordHorarioMat.jCBDia.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+        viewCordHorarioMat.spHoraIni.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(0).getHoraInicial());
+        viewCordHorarioMat.spMinIni.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(0).getMinutosInicial());
+        viewCordHorarioMat.spHoraFin.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(0).getHoraFinal());
+        viewCordHorarioMat.spMinFin.setValue(Administra_horarios.AsignaturaSemetreActual.getHorario().get(0).getMinutosFinal());
+        viewCordHorarioMat.jLTitulo.setText(Administra_horarios.AsignaturaSemetreActual.getAsignaturaAsig().getNombre());
+        
+        Administra_horarios.horarioAatual = Administra_horarios.AsignaturaSemetreActual.getHorario();
+        viewCordHorarioMat.indice = 0;
+        }
+    }//GEN-LAST:event_jBHorarioActionPerformed
+
+    private void jBVerAulasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerAulasActionPerformed
+        // TODO add your handling code here:
+        new viewCordAulas().setVisible(true);
+        mtds.generarListaAulas(Administra_horarios.ListaAulas);
+    }//GEN-LAST:event_jBVerAulasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,12 +397,13 @@ public class viewCordMaterias extends javax.swing.JFrame {
     private javax.swing.JLabel cpNombre;
     private javax.swing.JLabel cpProfesor;
     private javax.swing.JLabel cpSOPgW;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jBCerrar;
+    private javax.swing.JButton jBGenerar;
+    private javax.swing.JButton jBHorario;
+    private javax.swing.JButton jBModificar;
+    private javax.swing.JButton jBVerAulas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList jList1;
+    public static javax.swing.JList jListMaterias;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

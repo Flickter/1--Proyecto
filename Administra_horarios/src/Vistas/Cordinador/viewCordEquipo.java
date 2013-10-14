@@ -4,12 +4,16 @@
  */
 package Vistas.Cordinador;
 
+import administra_horarios.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alonso
  */
 public class viewCordEquipo extends javax.swing.JFrame {
 
+    int indice = 0;
     /**
      * Creates new form viewCordEquipo
      */
@@ -30,10 +34,10 @@ public class viewCordEquipo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jBAtras = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLNomMod = new javax.swing.JLabel();
+        jLCantidadMod = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,20 +54,35 @@ public class viewCordEquipo extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
         jLabel4.setText("Cantidad:");
 
-        jButton1.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jButton1.setText("<");
+        jBAtras.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jBAtras.setText("<");
+        jBAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAtrasActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
         jButton2.setText(">");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jLabel5.setText("Cambiar");
+        jLNomMod.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jLNomMod.setText("Cambiar");
 
-        jLabel6.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jLabel6.setText("Cambiar2");
+        jLCantidadMod.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jLCantidadMod.setText("Cambiar2");
 
         jButton3.setFont(new java.awt.Font("Papyrus", 0, 13)); // NOI18N
         jButton3.setText("Cerrar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,7 +99,7 @@ public class viewCordEquipo extends javax.swing.JFrame {
                                 .addComponent(jLabel2))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(133, 133, 133)
-                                .addComponent(jButton1)
+                                .addComponent(jBAtras)
                                 .addGap(36, 36, 36)
                                 .addComponent(jButton2))
                             .addGroup(layout.createSequentialGroup()
@@ -89,11 +108,11 @@ public class viewCordEquipo extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel6))
+                                        .addComponent(jLCantidadMod))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel5)))))
+                                        .addComponent(jLNomMod)))))
                         .addGap(0, 87, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -110,14 +129,14 @@ public class viewCordEquipo extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel5))
+                    .addComponent(jLNomMod))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel6))
+                    .addComponent(jLCantidadMod))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jBAtras)
                     .addComponent(jButton2))
                 .addGap(42, 42, 42)
                 .addComponent(jButton3)
@@ -126,6 +145,39 @@ public class viewCordEquipo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jBAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtrasActionPerformed
+        // TODO add your handling code here:
+        if(indice-1 == -1){
+            JOptionPane.showMessageDialog(null, "No hay equipo atras");
+        }
+        else
+        {
+            indice = indice - 1;
+            jLNomMod.setText( Administra_horarios.ListEquipoActual.get(indice).getNombre());
+            jLCantidadMod.setText( String.valueOf(Administra_horarios.ListEquipoActual.get(indice).getCantidad()));
+        }
+    }//GEN-LAST:event_jBAtrasActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(indice+1 == Administra_horarios.ListEquipoActual.size()){
+            JOptionPane.showMessageDialog(null, "Fin de la lista de equipo");
+        }
+        else{
+            indice = indice + 1;
+            System.out.println(Administra_horarios.AulaActual.getNombre());
+            jLNomMod.setText( Administra_horarios.ListEquipoActual.get(indice).getNombre());
+            jLCantidadMod.setText( String.valueOf(Administra_horarios.ListEquipoActual.get(indice).getCantidad()));
+        }
+            
+            
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,14 +214,14 @@ public class viewCordEquipo extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBAtras;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    public static javax.swing.JLabel jLCantidadMod;
+    public static javax.swing.JLabel jLNomMod;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,6 +3,9 @@
  * and open the template in the editor.
  */
 package Vistas.Cordinador;
+import administra_horarios.*;
+import javax.swing.JOptionPane;
+import pkAula.*;
 
 /**
  *
@@ -27,24 +30,29 @@ public class viewCordAulas extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jListAulas = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLAireAcon = new javax.swing.JLabel();
+        jBVerEquipo = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jLNomMod = new javax.swing.JLabel();
+        jLNumAulaMod = new javax.swing.JLabel();
+        jLUbicMod = new javax.swing.JLabel();
+        jLCapaMod = new javax.swing.JLabel();
+        jLAireAconMod = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setViewportView(jList1);
+        jListAulas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListAulasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jListAulas);
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 0, 18)); // NOI18N
         jLabel1.setText("Aulas");
@@ -61,29 +69,39 @@ public class viewCordAulas extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
         jLabel5.setText("Capacidad:");
 
-        jLabel6.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jLabel6.setText("Aire Acondiciondo:");
+        jLAireAcon.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jLAireAcon.setText("Aire Acondiciondo:");
 
-        jButton1.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jButton1.setText("Ver Equipo");
+        jBVerEquipo.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jBVerEquipo.setText("Ver Equipo");
+        jBVerEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVerEquipoActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Papyrus", 0, 13)); // NOI18N
         jButton2.setText("Cerrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jLabel7.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jLabel7.setText("Cambiar1");
+        jLNomMod.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jLNomMod.setText("Cambiar1");
 
-        jLabel8.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jLabel8.setText("Cambiar2");
+        jLNumAulaMod.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jLNumAulaMod.setText("Cambiar2");
 
-        jLabel9.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jLabel9.setText("Cambiar3");
+        jLUbicMod.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jLUbicMod.setText("Cambiar3");
 
-        jLabel10.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jLabel10.setText("Cambiar4");
+        jLCapaMod.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jLCapaMod.setText("Cambiar4");
 
-        jLabel11.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
-        jLabel11.setText("Cambiar5");
+        jLAireAconMod.setFont(new java.awt.Font("High Tower Text", 0, 16)); // NOI18N
+        jLAireAconMod.setText("Cambiar5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,24 +120,24 @@ public class viewCordAulas extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9))
+                                .addComponent(jLUbicMod))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10))
-                            .addComponent(jButton1)
+                                .addComponent(jLCapaMod))
+                            .addComponent(jBVerEquipo)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7))
+                                .addComponent(jLNomMod))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8))
+                                .addComponent(jLNumAulaMod))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(jLAireAcon)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11)))
+                                .addComponent(jLAireAconMod)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -137,25 +155,25 @@ public class viewCordAulas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel7))
+                            .addComponent(jLNomMod))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel8))
+                            .addComponent(jLNumAulaMod))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel9))
+                            .addComponent(jLUbicMod))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel10))
+                            .addComponent(jLCapaMod))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel11))
+                            .addComponent(jLAireAcon)
+                            .addComponent(jLAireAconMod))
                         .addGap(31, 31, 31)
-                        .addComponent(jButton1)
+                        .addComponent(jBVerEquipo)
                         .addGap(0, 37, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -166,6 +184,68 @@ public class viewCordAulas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jListAulasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListAulasMouseClicked
+        // TODO add your handling code here:
+        String numAula = (String)jListAulas.getSelectedValue();
+        Aulas aulaActual = Administra_horarios.ListaAulas.get(0);
+        for(int i =0; i< Administra_horarios.ListaAulas.size(); i++){
+            String temp = Administra_horarios.ListaAulas.get(i).getNumAula();
+            if (temp.equals(numAula)){
+                aulaActual = Administra_horarios.ListaAulas.get(i);
+            }
+        }
+        
+        jLNomMod.setText(aulaActual.getNombre());
+        jLNumAulaMod.setText(aulaActual.getNumAula());
+        jLUbicMod.setText(aulaActual.getUbicacion());
+        jLCapaMod.setText(Integer.toString(aulaActual.getCapaciad()));
+        
+        String tipoClase = aulaActual.getClass().getCanonicalName();
+        if (tipoClase.equals("pkAula.aulaTeoria")){
+            aulaTeoria auTeo = (aulaTeoria)aulaActual;
+            if(auTeo.getAireAcond() == true){
+                jLAireAcon.setText("Aire Acondicionado:");
+                jLAireAconMod.setText("Si");
+            }
+            else{
+                jLAireAcon.setText("Aire Acondicionado:");
+                jLAireAconMod.setText("No");
+            }
+            jBVerEquipo.enable(false);
+        }
+        if (tipoClase.equals("pkAula.aulaPractica")){
+            aulaPractica auPra = (aulaPractica)aulaActual;
+            jLAireAcon.setText("");
+            jLAireAconMod.setText("");
+            jBVerEquipo.enable(true);
+        }
+        Administra_horarios.AulaActual= aulaActual;
+    }//GEN-LAST:event_jListAulasMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        this.hide();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jBVerEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerEquipoActionPerformed
+        // TODO add your handling code here:
+        
+        String tipoClase = Administra_horarios.AulaActual.getClass().getCanonicalName();
+        if (tipoClase.equals("pkAula.aulaTeoria")){
+            JOptionPane.showMessageDialog(null, "Esta Aula no contiene equipo");
+        }
+        if (tipoClase.equals("pkAula.aulaPractica")){
+            new viewCordEquipo().setVisible(true);
+            aulaPractica AulaPra = (aulaPractica)Administra_horarios.AulaActual;
+            Administra_horarios.ListEquipoActual = AulaPra.getListaEquipo();
+            viewCordEquipo.jLNomMod.setText( Administra_horarios.ListEquipoActual.get(0).getNombre());
+            viewCordEquipo.jLCantidadMod.setText( String.valueOf(Administra_horarios.ListEquipoActual.get(0).getCantidad()));
+        }
+        
+        
+    }//GEN-LAST:event_jBVerEquipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,20 +282,20 @@ public class viewCordAulas extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBVerEquipo;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLAireAcon;
+    private javax.swing.JLabel jLAireAconMod;
+    private javax.swing.JLabel jLCapaMod;
+    private javax.swing.JLabel jLNomMod;
+    private javax.swing.JLabel jLNumAulaMod;
+    private javax.swing.JLabel jLUbicMod;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JList jList1;
+    public static javax.swing.JList jListAulas;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

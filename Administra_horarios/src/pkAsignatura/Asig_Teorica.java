@@ -13,9 +13,10 @@ public class Asig_Teorica extends Asignatura {
      * @param pgWeb Un String para la pagina Web
      * @param nom Un String para el nombre de la asignacion
      * @param cred Un Integer para el numero de creditos de esa asignacion
+     * @param cod Un String con el codigo de la materia
      */
-    public Asig_Teorica (String pgWeb, String nom, int cred) {
-        super(nom, cred);
+    public Asig_Teorica (String pgWeb, String nom, int cred, String cod) {
+        super(nom, cred, cod);
         paginaWeb = pgWeb;
     }
 
